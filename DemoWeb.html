@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <!-- Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet" />
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/JavaScript.js"></script>
+
+
+</head>
+<body>
+
+    <style>
+	body {
+    height: 100vh;
+    margin: 0;
+    background-color: rgb(240, 233, 239)
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 60px;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgb(240, 233, 239);
+    transition: left 0.3s;
+}
+
+.sidebar {
+    height: 100vh;
+    width: 60px; /* Adjust as needed */
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #1d1e52;
+    transition: width 0.3s ease-in-out;
+}
+
+.content {
+    margin-left: 60px; /* Adjust based on the width of the sidebar */
+    transition: margin-left 0.3s;
+    padding: 25px; /* Adjust as needed */
+}
+
+.toggle-btn {
+    font-size: 24px;
+    cursor: pointer;
+    position: fixed;
+    top: 10px;
+    left: 15px;
+    z-index: 1001;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width:60px
+    }
+
+    .content {
+        margin-left: 60px;
+    }
+}
+
+.nav_text {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s, visibility 0.5s;
+}
+
+.nav_link {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    align-items: center;
+    column-gap: 1rem;
+    padding: .5rem 0 0rem 1.5rem;
+}
+
+.nav_link {
+    position: relative;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 1rem;
+    transition: .3s
+}
+
+.nav_icon {
+    font-size: 1.25rem
+}
+
+        i {
+            color: tomato;
+        }
+    </style>
+    <!-- Navbar -->
+    <header class="header d-flex  text-black" id="header">
+        <span id="toggleIcon" class="p-1" onclick="toggleSidebar()"><i class="fas fa-bars fs-5 "></i></span>
+    </header>
+
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="nav_list">
+            <a href="#" class="nav_link ">
+                <i class="fas fa-tachometer-alt nav_icon"></i>
+                <span class="text-uppercase nav_text">Dashboard</span>
+            </a>
+            <a href="#" class="nav_link">
+                <i class="fa fa-shopping-cart nav_icon"></i>
+                <span class="text-uppercase nav_text">Purchase</span>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <div class="container-fluid body-content p-3">
+            <h2>Welcome to Your Company</h2>
+
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="https://source.unsplash.com/user/c_v_r/1900x800" alt="Image 1" class="card-img-top">
+                <div class="card-body">
+                    <p class="card-text">Description for Image 1.</p>
+                </div>
+            </div>
+        </div>
+         <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="https://source.unsplash.com/user/c_v_r/1900x800" alt="Image 1" class="card-img-top">
+                <div class="card-body">
+                    <p class="card-text">Description for Image 2.</p>
+                </div>
+            </div>
+        </div>
+		 <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="https://source.unsplash.com/user/c_v_r/1900x800" alt="Image 1" class="card-img-top">
+                <div class="card-body">
+                    <p class="card-text">Description for Image 3.</p>
+                </div>
+            </div>
+        </div>
+		 <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="https://source.unsplash.com/user/c_v_r/1900x800" alt="Image 1" class="card-img-top">
+                <div class="card-body">
+                    <p class="card-text">Description for Image 4.</p>
+                </div>
+            </div>
+        </div>
+		 <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="https://source.unsplash.com/user/c_v_r/1900x800" alt="Image 1" class="card-img-top">
+                <div class="card-body">
+                    <p class="card-text">Description for Image 5.</p>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+        </div>
+    </div>
+<script>
+function toggleSidebar() {
+    const sidebar = $('.sidebar');
+    const content = $('.content');
+    const header = $('.header');
+    const texts = $('.nav_text');
+
+    // Toggle the 'expanded' class on the sidebar
+    sidebar.toggleClass('expanded');
+
+    // Check if the sidebar is expanded
+    const isExpanded = sidebar.hasClass('expanded');
+
+    // Update styles based on the expanded state
+    sidebar.css('width', isExpanded ? '230px' : '60px');
+    content.css('margin-left', isExpanded ? '230px' : '60px');
+    header.css('left', isExpanded ? '230px' : '60px');
+
+    // Update styles for each nav_text element
+    texts.css({
+        'opacity': isExpanded ? '1' : '0',
+        'visibility': isExpanded ? 'visible' : 'hidden',
+        'pointer-events': isExpanded ? 'auto' : 'none'
+    });
+
+    const toggleIcon = $('#toggleIcon i');
+
+    toggleIcon.removeClass('fa-bars').addClass('fa-times');
+    if (!isExpanded) {
+        toggleIcon.removeClass('fa-times').addClass('fa-bars');
+    }
+}
+
+</script>
+</body>
+</html>
